@@ -75,9 +75,11 @@ protected:
 	Base::EventHandler2 h_generate_data;
 	Base::EventHandler2 h_update_params;
 	Base::EventHandler2 h_reload_file;
+	Base::EventHandler2 h_print_data;
 
 	// Handlers
 	void generate_data();
+	void print_data();
 	void update_params();
 	void reload_file();
 

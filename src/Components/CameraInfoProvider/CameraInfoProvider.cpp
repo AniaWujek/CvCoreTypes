@@ -55,6 +55,10 @@ void CameraInfoProvider::prepareInterface() {
 	registerHandler("generate_data", boost::bind(&CameraInfoProvider::generate_data, this));
 	addDependency("generate_data", NULL);
 
+	//"print data" handler.
+	registerHandler("print_data", boost::bind(&CameraInfoProvider::print_data, this));
+	//addDependency("print_data", NULL);
+
 	//"Reload file" handler.
 	registerHandler("reload_file", boost::bind(&CameraInfoProvider::reload_file, this));
 //    addDependency("reload_file", NULL);
@@ -107,6 +111,16 @@ void CameraInfoProvider::generate_data() {
 	CLOG(LDEBUG) << "write";
 	out_camerainfo.write(camera_info);
 }
+
+void CameraInfoProvider::print_data() {
+	cout<<"camera_matrix\n"<<camera_matrix<<endl;
+	cout<<"dist_coeffs\n"<<dist_coeffs<<endl;
+	cout<<"rectificaton_matrix\n"<<rectificaton_matrix<<endl;
+	cout<<"projection_matrix\n"<<projection_matrix<<endl;
+	cout<<"rotation_matrix\n"<<rotation_matrix<<endl;
+	cout<<"translation_matrix\n"<<translation_matrix<<endl;
+}
+
 
 void CameraInfoProvider::update_params() {
 	Types::CameraInfo camera_info = in_camerainfo.read();
